@@ -1,7 +1,7 @@
 using UnityEngine;
 using R3;
 
-public class PlayerModel : MonoBehaviour
+public class PlayerModel : ModelBase
 {
     CompositeDisposable _disposables = new CompositeDisposable();
 
