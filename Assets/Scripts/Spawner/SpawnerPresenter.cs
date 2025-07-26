@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 
 public class SpawnerPresenter : PresenterBase
 {
-    [SerializeField] SpawnerModel _spawnerModel = null;
     [SerializeField] BlockPresenter[] _blockPresenters = null;
 
     private void Start()

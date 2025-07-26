@@ -17,9 +17,6 @@ public class InGameManagerModel : ModelBase
     [SerializeField] float _nextKeyRotateInterval = 0.25f;
     public float NextKeyRotateInterval => _nextKeyRotateInterval;
 
-    [SerializeField] GameObject _gameOverPanel = null;
-    public GameObject GameOverPanel => _gameOverPanel;
-
     float _nextDropTimer = 0.0f;
     public float NextDropTimer => _nextDropTimer;
     public void SetNextDropTimer(float nextDropTimer) => _nextDropTimer = nextDropTimer;
@@ -37,7 +34,7 @@ public class InGameManagerModel : ModelBase
     public void SetNextKeyRotateTimer(float nextKeyRotateTimer) => _nextKeyRotateTimer = nextKeyRotateTimer;
 
     ReactiveProperty<bool> _isGameOverReactiveProperty = new ReactiveProperty<bool>(false);
-    public ReadOnlyReactiveProperty<bool> GameOverReactiveProperty => _isGameOverReactiveProperty;
+    public ReadOnlyReactiveProperty<bool> IsGameOverReactiveProperty => _isGameOverReactiveProperty;
     public void SetIsGameOver(bool isGameOver) => _isGameOverReactiveProperty.Value = isGameOver;
 
     private void Awake()

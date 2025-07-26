@@ -15,7 +15,6 @@ public class GameOverPresenter : PresenterBase
     protected override async UniTask Initialize()
     {
         _gameOverView.GameOverButtonObservable.Subscribe(PushRetryButton).AddTo(gameObject);
-
         _gameOverModel.IsGameOver.Subscribe(GameOver).AddTo(gameObject);
         
         IsInitialized = true;
@@ -29,7 +28,12 @@ public class GameOverPresenter : PresenterBase
 
     void GameOver(bool isGameOver)
     {
+        if (!isGameOver)
+        {
+            return;
+        }
 
+        _gameOverView.ChangeGameOverObjActive(isGameOver);
     }
 
     public void SetIsGameOver(bool isGameOver)

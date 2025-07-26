@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000004b9f8130
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -908,11 +908,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -928,18 +928,18 @@ Canvas:
   m_GameObject: {fileID: 811390759}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 981982093}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 813801291
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &811390763
@@ -1004,7 +1004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0b70091af32b04d9260b0743e50955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnerModel: {fileID: 951094713}
   _blockPresenters:
   - {fileID: 5636067505942936391, guid: 5548cf9449d770b4ea0eca191966d0e2, type: 3}
   - {fileID: 622057530236390211, guid: 51d3c82e0fb5e04429bf66a8c6e35c71, type: 3}
@@ -1289,7 +1288,6 @@ MonoBehaviour:
   _nextKeyDownInterval: 0.02
   _nextKeyLeftRightInterval: 0.25
   _nextKeyRotateInterval: 0.25
-  _gameOverPanel: {fileID: 0}
 --- !u!114 &1790043235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,8 +1300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4582898cce9c1cc448d40fbd7339c7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inGameManagerModel: {fileID: 1790043234}
   _spawnerPresenter: {fileID: 951094714}
-  _boardPresenter: {fileID: 504785218}
+  _boardPresenter: {fileID: 504785219}
+  _gameOverPresenter: {fileID: 740146368}
 --- !u!4 &1790043236
 Transform:
   m_ObjectHideFlags: 0

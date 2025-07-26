@@ -19,4 +19,24 @@ public class BoardPresenter : PresenterBase
 
         await UniTask.CompletedTask;
     }
+
+    public bool CheckPosition(GameObject block)
+    {
+        return _boardModel.CheckPosition(block);
+    }
+
+    public void SaveBlockInGrid(GameObject block)
+    {
+        _boardModel.SaveBlockInGrid(block);
+    }
+
+    public void ClearAllRows()
+    {
+        _boardModel.ClearAllRows();
+    }
+
+    public bool OverLimit(GameObject block)
+    {
+        return _boardModel.OverLimit(block);
+    }
 }
