@@ -6,10 +6,13 @@ using R3;
 public class InGameManagerPresenter : PresenterBase
 {
     [SerializeField] InGameManagerModel _inGameManagerModel = null;
+    [SerializeField] InGameManagerLoadingModel _inGameManagerLoadingModel = null;
     [SerializeField] SpawnerPresenter _spawnerPresenter = null;
     [SerializeField] BoardPresenter _boardPresenter = null;
 
-    [SerializeField] GameOverPresenter _gameOverPresenter = null;
+    InGameUiPresenter _inGameUiPresenter = null;
+    public InGameUiPresenter InGameUi => _inGameUiPresenter;
+    GameOverPresenter _gameOverPresenter = null;
 
     BlockPresenter _activeBlockPresenter = null;
 
@@ -20,6 +23,12 @@ public class InGameManagerPresenter : PresenterBase
 
     protected override async UniTask Initialize()
     {
+        _inGameUiPresenter = Instantiate(_inGameManagerLoadingModel.InGameUiObj).GetComponent<InGameUiPresenter>();
+
+        await UniTask.WaitUntil(() => _inGameUiPresenter.IsInitialized);
+
+        _gameOverPresenter = _inGameUiPresenter.GameOverUiPresenter;
+
         _spawnerPresenter.transform.position = Rounding.Round(_spawnerPresenter.transform.position);
 
         _inGameManagerModel.SetNextKeyDownTimer(Time.time + _inGameManagerModel.NextKeyDownInterval);
