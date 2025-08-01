@@ -7,14 +7,14 @@ public class InGameManagerPresenter : PresenterBase
 {
     [SerializeField] InGameManagerModel _inGameManagerModel = null;
     [SerializeField] InGameManagerLoadingModel _inGameManagerLoadingModel = null;
-    [SerializeField] SpawnerPresenter _spawnerPresenter = null;
-    [SerializeField] BoardPresenter _boardPresenter = null;
 
     InGameUiPresenter _inGameUiPresenter = null;
     public InGameUiPresenter InGameUi => _inGameUiPresenter;
     GameOverPresenter _gameOverPresenter = null;
 
     BlockPresenter _activeBlockPresenter = null;
+    SpawnerPresenter _spawnerPresenter = null;
+    BoardPresenter _boardPresenter = null;
 
     private void Start()
     {
@@ -24,8 +24,10 @@ public class InGameManagerPresenter : PresenterBase
     protected override async UniTask Initialize()
     {
         _inGameUiPresenter = Instantiate(_inGameManagerLoadingModel.InGameUiObj).GetComponent<InGameUiPresenter>();
+        _boardPresenter = Instantiate(_inGameManagerLoadingModel.BoardObj).GetComponent<BoardPresenter>();
+        _spawnerPresenter = Instantiate(_inGameManagerLoadingModel.SpawnObj).GetComponent<SpawnerPresenter>();
 
-        await UniTask.WaitUntil(() => _inGameUiPresenter.IsInitialized);
+        await UniTask.WaitUntil(() => _inGameUiPresenter.IsInitialized && _boardPresenter.IsInitialized && _spawnerPresenter.IsInitialized);
 
         _gameOverPresenter = _inGameUiPresenter.GameOverUiPresenter;
 
@@ -35,10 +37,10 @@ public class InGameManagerPresenter : PresenterBase
         _inGameManagerModel.SetNextKeyLeftRightTimer(Time.time + _inGameManagerModel.NextKeyLeftRightInterval);
         _inGameManagerModel.SetNextKeyRotateTimer(Time.time + _inGameManagerModel.NextKeyRotateInterval);
 
-        GameStart();
-
         _inGameManagerModel.IsGameOverReactiveProperty.Subscribe(OnIsGameOver).AddTo(gameObject);
         this.UpdateAsObservable().Subscribe(OnUpdate).AddTo(gameObject);
+
+        GameStart();
 
         IsInitialized = true;
         await UniTask.CompletedTask;
